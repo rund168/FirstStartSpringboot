@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Article</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="col-md-6">
+                <h5>Form Article</h5>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-primary btn-sm float-end" th:href="@{/admin/articles}">Back</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form th:action="@{/admin/articles/create}" method="post" th:object="${object}">
+                    <input type="text" th:field="*{id}" hidden>
+                    <div class="md-3">
+                        <label class="form-label">Select Category</label>
+                        <select class="form-control" th:field="*{category}">
+                            <option th:each="s : *{categoryList}"
+                                    th:value="${s.id}"
+                                    th:text="${s.name}">
+
+                            </option>
+                        </select>
+                    </div>
+                    <div class="md-3">
+                        <label class="form-label">Title</label>
+                        <input th:field="*{title}" class="form-control" placeholder="Title">
+                    </div>
+                    <div class="md-3">
+                        <label class="form-label">Description</label>
+                        <input th:field="*{description}" class="form-control" placeholder="Description">
+                    </div>
+                    <div class="md-3">
+                        <label class="form-label">Select Status</label>
+                        <select class="form-control" th:field="*{status}">
+                            <option th:each="s : *{statusList}"
+                                    th:value="${s.getKey()}"
+                                    th:text="${s.getValue()}">
+
+                            </option>
+                        </select>
+                    </div>
+                    <div class="md-3 mt-1">
+                        <button th:if="*{id==0}" class="btn btn-primary btn-sm">Create</button>
+                        <button th:if="*{id!=0}" class="btn btn-primary btn-sm">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

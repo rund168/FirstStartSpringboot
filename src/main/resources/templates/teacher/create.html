@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>List Teacher</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <h5 >Create Article</h5>
+            <div class="col-md-12">
+                <form th:action="@{/teachers/create}" method="post" th:object="${teacher}">
+                    <div class="md-3">
+                        <label class="form-label">Teacher Name</label>
+                        <input th:field="*{name}" class="form-control" placeholder="Input Teacher name">
+                    </div>
+                    <div class="md-3">
+                        <label class="form-label">Gender</label>
+                        <input th:field="*{gender}" class="form-control" placeholder="Input Teacher gender">
+                    </div>
+                    <div class="md-3 mt-1">
+                        <button class="btn btn-primary btn-sm"> Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

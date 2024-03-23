@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Teacher</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <h5 >Update Article</h5>
+            <div class="col-md-12">
+                <form th:action="@{/teachers/update}" method="post" th:object="${teacher}">
+                    <div class="md-3">
+                        <input th:field="*{id}" hidden>
+                        <label class="form-label">Teacher Name</label>
+                        <input th:field="*{name}" class="form-control" placeholder="Input Teacher name">
+                    </div>
+                    <div class="md-3">
+                        <label class="form-label">Gender</label>
+                        <input th:field="*{gender}" class="form-control" placeholder="Input Teacher gender">
+                    </div>
+                    <div class="md-3 mt-1">
+                        <button class="btn btn-primary btn-sm"> Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

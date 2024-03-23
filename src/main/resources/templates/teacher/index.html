@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>List Teacher</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="col-md-6">
+                <h5>List Teacher</h5>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-primary btn-sm float-end" th:href="@{/teachers/create}">Add</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="teacher: ${teachers}">
+                        <td th:text="${teacher.id}"></td>
+                        <td th:text="${teacher.name}"></td>
+                        <td th:text="${teacher.gender}"></td>
+                        <td>
+                            <a class="btn btn-primary btn-ms" th:href="@{'/teachers/edit/'+${teacher.id}}">Edit</a>
+                            <a class="btn btn-danger btn-ms" th:href="@{'/teachers/delete/'+${teacher.id}}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
